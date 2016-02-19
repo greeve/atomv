@@ -1,0 +1,16 @@
+*.pyc
+*.pyo
+*.db
+*.log
+__pycache__
+.coverage
+*.idx
+*.index
+secrets.ini
+
+/static
+/env
+/fabfile.py
+/config/deploy
+/secrets.ini
+
