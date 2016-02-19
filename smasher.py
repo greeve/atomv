@@ -4,6 +4,7 @@
 import sys
 from optparse import OptionParser
 import requests
+import json
 from collections import Counter
 
 ATOM_URL = "http://atom.lib.byu.edu/{slug}"
@@ -56,7 +57,7 @@ def type_counts(response):
             all_data.append(item_counts(aggregate_data(r), field_type))
         else:
             print(r.status_code, r.url)
-    print(all_data)
+    print(json.dumps(all_data))
 
 
 def item_counts(data=None, field=None):
@@ -103,7 +104,7 @@ def barchart(data):
         if str(x) not in some_years:
             dataset.append({'date': str(x), 'frequency': 0})
     dataset.sort(key=lambda d: (d['date'], d['frequency']))
-    print(dataset)
+    print(json.dumps(dataset))
 
 
 def _main(params=None):
