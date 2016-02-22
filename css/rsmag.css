@@ -2,6 +2,7 @@
 
 #freq .bar {
     fill: steelblue;
+    cursor: pointer;
 }
 
 #freq .bar:hover {
