@@ -12,7 +12,7 @@ function truncate(str, maxLength, suffix) {
 }
 
 function createItemsChart() {
-    var margin = {top: 20, right: 200, bottom: 0, left: 20},
+    var margin = {top: 20, right: 200, bottom: 0, left: 10},
         width = 960,
         height = 650;
 
