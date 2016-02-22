@@ -1,39 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>rsmag</title>
-    <script src="http://d3js.org/d3.v3.min.js"></script>
+$(document).ready(function() {
+    createFreqChart();
+});
 
-<style>
-.bar {
-    fill: steelblue;
-}
-
-.bar:hover {
-    fill: brown;
-}
-
-.axis {
-    font: 1em sans-serif;
-}
-
-.axis path, .axis line {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
-}
-
-.x.axis path {
-    display: none;
-}
-</style>
-
-</head>
-<body>
-    <h1>References to 'Book of Mormon' in <a href="https://atom.lib.byu.edu/rsmag" target="_blank">Relief Society Magazine</a></h1>
-    <h2>Word Frequencies from an <a href="http://atom.lib.byu.edu" target="_blank">ATOM</a> collection</h2>
-<script>
-
+function createFreqChart() {
     var margin = {top: 20, right: 20, bottom: 90, left: 40};
     var width = 960 - margin.left - margin.right;
     var height = 500 - margin.top - margin.bottom;
@@ -53,13 +22,13 @@
         .orient("left")
         .ticks(5);
 
-    var svg = d3.select("body").append("svg")
+    var svg = d3.select("#freq").append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    d3.json("rsmag-freq.json", function(data) {
+    d3.json("js/rsmag-freq.json", function(data) {
         x.domain(data.map(function(d) { return d.date; }));
         y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
         svg.append("g")
@@ -91,11 +60,4 @@
             .attr("y", function(d) { return y(d.frequency); })
             .attr("height", function(d) { return height - y(d.frequency); });
     });
-
-
-</script>
-
-</body>
-</html>
-
-
+}

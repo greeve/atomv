@@ -1,0 +1,54 @@
+/* Frequency Histogram */
+
+#freq .bar {
+    fill: steelblue;
+}
+
+#freq .bar:hover {
+    fill: brown;
+}
+
+#freq .axis {
+    font: 1em sans-serif;
+}
+
+#freq .axis path, .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+#freq .x.axis path {
+    display: none;
+}
+
+/* Item Types Distribution */
+
+#items {
+    font-size: 10px;
+}
+
+#items .axis path, .axis line {
+    fill: none;
+    stroke: #b6b6b6;
+    shape-rendering: crispEdges;
+}
+
+#items .tick text {
+    fill: #999;
+}
+
+#items g.journal.active {
+    cursor: pointer;
+}
+
+#items text.label {
+    font-size: 12px; 
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#items text.value {
+    font-size: 12px;
+    font-weight: bold;
+}
