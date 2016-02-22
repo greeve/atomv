@@ -60,6 +60,8 @@ function createItemsChart() {
                 .enter()
                 .append("circle");
 
+            var title = circles.append("title").text(function(d) { return d[1]; });
+
             var text = g.selectAll("text")
                 .data(data[j]['items'])
                 .enter()
