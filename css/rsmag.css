@@ -15,12 +15,16 @@
 
 #freq .axis path, .axis line {
     fill: none;
-    stroke: #000;
+    stroke: #b6b6b6;
     shape-rendering: crispEdges;
 }
 
 #freq .x.axis path {
     display: none;
+}
+
+#freq .tick text {
+    fill: #999;
 }
 
 /* Item Types Distribution */
