@@ -43,6 +43,10 @@
     cursor: pointer;
 }
 
+#items circle {
+    cursor: pointer;
+}
+
 #items text.label {
     font-size: 12px; 
     font-weight: bold;
