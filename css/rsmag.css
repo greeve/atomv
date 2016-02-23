@@ -23,6 +23,10 @@
     display: none;
 }
 
+#freq .y.axis text {
+    fill: #999;
+}
+
 #freq .tick text {
     fill: #999;
 }
