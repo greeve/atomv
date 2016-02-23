@@ -63,7 +63,7 @@ function createFreqChart(source) {
             .style("text-anchor", "end")
             .text("Frequency");
 
-        svg.selectAll(".bar")
+        var bars = svg.selectAll(".bar")
             .data(data)
             .enter().append("rect")
             .attr("class", "bar")
@@ -71,5 +71,7 @@ function createFreqChart(source) {
             .attr("width", x.rangeBand())
             .attr("y", function(d) { return y(d.frequency); })
             .attr("height", function(d) { return height - y(d.frequency); });
+
+        var title = bars.append("title").text(function(d) { return d.frequency; });
     });
 }
