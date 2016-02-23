@@ -1,3 +1,5 @@
+var slug = "rsmag";
+
 $(document).ready(function() {
     var charts = [
         {"file": "js/rsmag-alr.json", "query": "Alice Louise Reynolds"},
@@ -70,7 +72,12 @@ function createFreqChart(source) {
             .attr("x", function(d) { return x(d.date); })
             .attr("width", x.rangeBand())
             .attr("y", function(d) { return y(d.frequency); })
-            .attr("height", function(d) { return height - y(d.frequency); });
+            .attr("height", function(d) { return height - y(d.frequency); })
+            .on("click", function(d) { 
+                var query = "(" + source.query + ")" + " AND " + "pubyear_e:[" + d.date + " TO " + d.date + "]";
+                var url = "https://atom.lib.byu.edu/" + slug + "/search/?q=";
+                window.open(url + query);
+            });
 
         var title = bars.append("title").text(function(d) { return d.frequency; });
     });
