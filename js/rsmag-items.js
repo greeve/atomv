@@ -1,3 +1,5 @@
+var slug = "rsmag";
+
 $(document).ready(function() {
     createItemsChart();
 });
@@ -61,6 +63,7 @@ function createItemsChart() {
                 .append("circle");
 
             var title = circles.append("title").text(function(d) { return d[1]; });
+            var circleText = circles.append("text").text(data[j].name);
 
             var text = g.selectAll("text")
                 .data(data[j]['items'])
@@ -69,13 +72,19 @@ function createItemsChart() {
 
             var rScale = d3.scale.linear()
                 .domain([0, d3.max(data[j]['items'], function(d) { return d[1]; })])
-                .range([2, 9]);
+                .range([1, 9]);
 
             circles
                 .attr("cx", function(d, i) { return xScale(d[0]); })
                 .attr("cy", j*20+20)
                 .attr("r", function(d) { return rScale(d[1]); })
-                .style("fill", function(d) { return c(j); });
+                .style("fill", function(d) { return c(j); })
+                .on("click", function(d) {
+                    var itemType = this.lastElementChild.innerHTML;
+                    query = "(collection_e:" + itemType + " AND " + "pubyear_e:[" + d[0] + " TO " + d[0] + "])";
+                    url = "https://atom.lib.byu.edu/" + slug + "/search/?q=";
+                    window.open(url + query);
+                });
 
             text
                 .attr("y", j*20+25)
@@ -90,9 +99,9 @@ function createItemsChart() {
                 .attr("x",width+20)
                 .attr("class","label")
                 .text(truncate(data[j]['name'],30,"..."))
-                .style("fill", function(d) { return c(j); })
-                .on("mouseover", mouseover)
-                .on("mouseout", mouseout);
+                .style("fill", function(d) { return c(j); });
+                // .on("mouseover", mouseover)
+                // .on("mouseout", mouseout);
         };
 
         function mouseover(p) {
