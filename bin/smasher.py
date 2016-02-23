@@ -108,7 +108,6 @@ def barchart(data):
 
 
 def _main(params=None):
-    print(params)
     if not params:
         return -1
 
