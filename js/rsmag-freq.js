@@ -1,8 +1,20 @@
 $(document).ready(function() {
-    createFreqChart();
+    var charts = [
+        {"file": "js/rsmag-alr.json", "query": "Alice Louise Reynolds"},
+        {"file": "js/rsmag-suffrage.json", "query": "suffrage"},
+        {"file": "js/rsmag-poetry.json", "query": "poetry"},
+        {"file": "js/rsmag-potato.json", "query": "potato"},
+        {"file": "js/rsmag-candy.json", "query": "candy"}
+    ]
+
+    var arrayLength = charts.length;
+    for (var i = 0; i < arrayLength; i++) {
+        createFreqChart(charts[i]);
+    }
 });
 
-function createFreqChart() {
+function createFreqChart(source) {
+    var heading = d3.select("#freq").append("h1").text("References to \"" + source.query + "\"");
     var margin = {top: 20, right: 20, bottom: 90, left: 40};
     var width = 960 - margin.left - margin.right;
     var height = 500 - margin.top - margin.bottom;
@@ -28,7 +40,7 @@ function createFreqChart() {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    d3.json("js/rsmag-freq.json", function(data) {
+    d3.json(source.file, function(data) {
         x.domain(data.map(function(d) { return d.date; }));
         y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
         svg.append("g")
