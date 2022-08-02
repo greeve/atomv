@@ -81,7 +81,7 @@ function createItemsChart() {
                 .style("fill", function(d) { return c(j); })
                 .on("click", function(d) {
                     var itemType = this.lastElementChild.innerHTML;
-                    query = "(collection_e:" + itemType + " AND " + "pubyear_e:[" + d[0] + " TO " + d[0] + "])";
+                    query = "(collection:" + itemType + " AND " + "pubyear:[" + d[0] + " TO " + d[0] + "])";
                     url = "https://atom.lib.byu.edu/" + slug + "/search/?q=";
                     window.open(url + query);
                 });

@@ -74,7 +74,7 @@ function createFreqChart(source) {
             .attr("y", function(d) { return y(d.frequency); })
             .attr("height", function(d) { return height - y(d.frequency); })
             .on("click", function(d) { 
-                var query = "(" + source.query + ")" + " AND " + "pubyear_e:[" + d.date + " TO " + d.date + "]";
+                var query = source.query + " AND " + "pubyear:[" + d.date + " TO " + d.date + "]";
                 var url = "https://atom.lib.byu.edu/" + slug + "/search/?q=";
                 window.open(url + query);
             });
